@@ -15,7 +15,7 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
   var city = req.body.queryResult.parameters['userCity'];
   var name = req.body.queryResult.parameters['userName'];
-  var antwoord = "Hi, this works."; 
+  var antwoord = "Hi, this works great."; 
   
 
   return res.json({

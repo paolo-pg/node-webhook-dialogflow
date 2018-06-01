@@ -38,7 +38,7 @@ restService.use(bodyParser.json());
   }).catch(() => {
     res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
   });
-};
+});
 
 function callWeatherApi (city, date) {
   return new Promise((resolve, reject) => {

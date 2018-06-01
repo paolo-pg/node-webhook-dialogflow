@@ -30,7 +30,7 @@ restService.post("/echo", function(req, res) {
   resp.on('end', () => {
     console.log(JSON.parse(data).explanation);
      return res.json({
-    fulfillmentText: JSON.parse(data).explanation
+    fulfillmentText: JSON.parse(data).date
   });
   });
  

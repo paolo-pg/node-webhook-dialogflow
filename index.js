@@ -20,8 +20,8 @@ restService.use(bodyParser.json());
 
 
 
-// exports.weatherWebhook = (req, res) => {
-  restService.post("/echo", function(req, res) {
+restService.post = (req, res) => {
+  // restService.post("/echo", function(req, res) {
   // Get the city and date from the request
   let city = req.body.queryResult.parameters['geo-city']; // city is a required param
 
@@ -38,7 +38,7 @@ restService.use(bodyParser.json());
   }).catch(() => {
     res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
   });
-});
+};
 
 function callWeatherApi (city, date) {
   return new Promise((resolve, reject) => {

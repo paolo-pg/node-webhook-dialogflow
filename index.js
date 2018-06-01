@@ -24,7 +24,7 @@ restService.use(bodyParser.json());
 // });
 
 restService.post("/echo", function(req, res) {
-  if(request.body.result.parameters['top-rated']) {
+  
         var req = unirest("GET", "http://www.omdbapi.com/?i=tt3896198&apikey=e65e58b8");
             req.query({
                 "page": "1"
@@ -47,7 +47,7 @@ restService.post("/echo", function(req, res) {
                     });
                 }
             });
-    }
+    
   });
   
   

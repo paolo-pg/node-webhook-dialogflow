@@ -2,6 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const unirest = require('unirest');
 
 const restService = express();
 restService.use(
@@ -24,10 +25,10 @@ restService.use(bodyParser.json());
 // });
 
 restService.post("/echo", function(req, res) {
-  
+
         var req = unirest("GET", "http://www.omdbapi.com/?i=tt3896198&apikey=e65e58b8");
             req.query({
-                "page": "1"
+                "Title": "Guardians of the Galaxy Vol. 2"
             });
             req.send("{}");
             req.end(function(res) {

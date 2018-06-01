@@ -8,14 +8,14 @@ const http = require('http');
 const host = 'api.worldweatheronline.com';
 const wwoApiKey = '86840a75efc34f51aaa130030182905';
 
-const restService = express();
-restService.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
+// const restService = express();
+// restService.use(
+//   bodyParser.urlencoded({
+//     extended: true
+//   })
+// );
 
-restService.use(bodyParser.json());
+// restService.use(bodyParser.json());
 
 
 

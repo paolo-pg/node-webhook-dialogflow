@@ -18,7 +18,7 @@ restService.post("/echo", function(req, res) {
   var name = req.body.queryResult.parameters['name'];
   // var antwoord = "Allright " + name + ", the Cappucino is free today in " + city;
 
-  https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', (resp) => {
+  https.get('https://www.omdbapi.com/?i=tt3896198&apikey=e65e58b8', (resp) => {
   let data = '';
  
   // A chunk of data has been recieved.
@@ -28,9 +28,9 @@ restService.post("/echo", function(req, res) {
  
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    console.log(JSON.parse(data).explanation);
+    console.log(JSON.parse(data).year);
      return res.json({
-    fulfillmentText: JSON.parse(data).date
+    fulfillmentText: JSON.parse(data).year
   });
   });
  

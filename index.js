@@ -13,8 +13,8 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  var city = req.body.queryResult.parameters['userCity'];
-  var name = req.body.queryResult.parameters['userName'];
+  var city = req.body.queryResult.parameters['geo-city'];
+  var name = req.body.queryResult.parameters['name'];
   var antwoord = "Allright " + name + ", the Cappucino is free today in " + city; 
   
 

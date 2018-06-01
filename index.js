@@ -29,16 +29,15 @@ restService.post("/echo", function(req, res) {
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
     console.log(JSON.parse(data).Title);
+    return res.json({
+    fulfillmentText: JSON.parse(data).Title
+  });
   });
  
 }).on("error", (err) => {
   console.log("Error: " + err.message);
 }); 
   
-
-  return res.json({
-    fulfillmentText: JSON.parse(data).Title
-  });
 });
 
 

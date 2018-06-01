@@ -20,8 +20,8 @@ restService.use(bodyParser.json());
 
 
 
-restService.post = (req, res) => {
-  // restService.post("/echo", function(req, res) {
+// exports.weatherWebhook = (req, res) => {
+  exports.weatherWebhook("/echo", function(req, res) {
   // Get the city and date from the request
   let city = req.body.queryResult.parameters['geo-city']; // city is a required param
 

@@ -28,9 +28,9 @@ restService.post("/echo", function(req, res) {
  
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    console.log(JSON.parse(data).year);
+    console.log(JSON.parse(data).Year);
      return res.json({
-    fulfillmentText: JSON.parse(data).year
+    fulfillmentText: JSON.parse(data).Year
   });
   });
  

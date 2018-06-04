@@ -28,9 +28,9 @@ restService.post("/echo", function(req, res) {
  
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    fulfillmentText: JSON.parse(data).data.request[0].query
+    var weatherDescription = JSON.parse(data).data.current_condition[0].weatherDesc[0].value
      return res.json({
-    fulfillmentText: JSON.parse(data).data.current_condition[0].weatherDesc[0].value
+    fulfillmentText: "I would the describe the weather as " + weatherDescription + "today."
   });
   });
  

@@ -7,6 +7,15 @@ const http = require('http');
 const host = 'api.worldweatheronline.com';
 const wwoApiKey = '86840a75efc34f51aaa130030182905';
 
+const restService = express();
+restService.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+
+restService.use(bodyParser.json());
+
 exports.weatherWebhook = (req, res) => {
   // Get the city and date from the request
   let city = req.body.queryResult.parameters['geo-city']; // city is a required param

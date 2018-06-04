@@ -18,7 +18,7 @@ restService.post("/echo", function(req, res) {
   var name = req.body.queryResult.parameters['name'];
   // var antwoord = "Allright " + name + ", the Cappucino is free today in " + city;
 
-  https.get('http://api.worldweatheronline.com/premium/v1/weather.ashx?key=86840a75efc34f51aaa130030182905&q=Eindhoven&format=json&num_of_days=5', (resp) => {
+  https.get('https://www.omdbapi.com/?i=tt3896198&apikey=e65e58b8', (resp) => {
   let data = '';
  
   // A chunk of data has been recieved.
@@ -26,14 +26,11 @@ restService.post("/echo", function(req, res) {
     data += chunk;
   });
  
- let response = JSON.parse(data);
- let forecast = response['data']['weather'][0];
-
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    // console.log(JSON.parse(data).data);
+    console.log(JSON.parse(data).Year);
      return res.json({
-    fulfillmentText: forecast
+    fulfillmentText: JSON.parse(data).Year
   });
   });
  

@@ -26,11 +26,14 @@ restService.post("/echo", function(req, res) {
     data += chunk;
   });
  
+ let response = JSON.parse(data);
+ let forecast = response['data']['weather'][0];
+
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    console.log(JSON.parse(data).data.request[0].query);
+    // console.log(JSON.parse(data).data);
      return res.json({
-    fulfillmentText: JSON.parse(data).data.request[0].query
+    fulfillmentText: forecast
   });
   });
  

@@ -30,7 +30,7 @@ restService.post("/echo", function(req, res) {
   resp.on('end', () => {
     var weatherDescription = JSON.parse(data).data.current_condition[0].weatherDesc[0].value
      return res.json({
-    fulfillmentText: "I would the describe the weather as " + weatherDescription + "today."
+    fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in" + city + " today. Would you like to order something?" 
   });
   });
  

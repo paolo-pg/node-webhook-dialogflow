@@ -28,10 +28,12 @@ restService.post("/echo", function(req, res) {
  
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    var weatherDescription = JSON.parse(data).data.current_condition[0].weatherDesc[0].value
-     return res.json({
-    fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in" + city + " today. Would you like to order something?" 
-  });
+    var weatherOutput = JSON.parse(data).data.current_condition[0].weatherDesc[0].value
+    var weatherDescription  = weatherOutput.toLowerCase();
+      return res.json({
+      // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
+      fulfillmentText: "Allright " + name + ". because the weather is " + weatherDescription + " in " + city + " today, i've got a special offer for you. Do you want to know what special offer i have for you?" 
+    });
   });
  
 }).on("error", (err) => {

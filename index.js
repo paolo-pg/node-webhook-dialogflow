@@ -20,7 +20,7 @@ restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
   console.log("Hieronder try");
-   try {
+   
         if (req.body && req.body.queryResult) {
             var body = req.body;
 
@@ -42,7 +42,7 @@ restService.post("/echo", function(req, res) {
             }
         }
 
-    } catch (err) {
+     catch (err) {
         console.error("Can't process request", err);
 
         return res.status(400).json({

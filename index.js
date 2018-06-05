@@ -19,28 +19,28 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
+  console.log("Hieronder try");
    try {
-        if (req.body && req.body.result) {
+        if (req.body && req.body.queryResult) {
             var body = req.body;
 
-            if (body.result.fulfillment) {
-                console.log(body.result.fulfillmentText);
+            if (body.queryResult.fulfillment) {
+                console.log(body.queryResult.fulfillmentText);
             }
 
-            if (body.result.action && currentAction.action != body.result.action) {
-                console.log("Updating action to: " + body.result.action);
-                currentAction.action = body.result.action;
+            if (body.queryResult.action && currentAction.action != body.queryResult.action) {
+                console.log("Updating action to: " + body.queryResult.action);
+                currentAction.action = body.queryResult.action;
                 res.sendStatus(200);
             } else {
                 return res.status(400).json({
                     status: {
                         code: 400,
-                        failedAction: body.result.action
+                        failedAction: body.queryResult.action
                     }
                 });
             }
         }
-
 
     } catch (err) {
         console.error("Can't process request", err);
@@ -52,6 +52,8 @@ restService.post("/echo", function(req, res) {
             }
         });
     }
+
+
 
 
   var city = req.body.queryResult.parameters['geo-city'];

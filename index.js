@@ -20,38 +20,39 @@ restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
   console.log("Hieronder try");
-   
-        if (req.body && req.body.queryResult) {
-            var body = req.body;
+  console.log(req.body.queryResult.intent.displayName);
+   // try {
+   //      if (req.body && req.body.queryResult) {
+   //          var body = req.body;
 
-            if (body.queryResult.fulfillment) {
-                console.log(body.queryResult.fulfillmentText);
-            }
+   //          if (body.queryResult.fulfillment) {
+   //              console.log(body.queryResult.fulfillmentText);
+   //          }
 
-            if (body.queryResult.action && currentAction.action != body.queryResult.action) {
-                console.log("Updating action to: " + body.queryResult.action);
-                currentAction.action = body.queryResult.action;
-                res.sendStatus(200);
-            } else {
-                return res.status(400).json({
-                    status: {
-                        code: 400,
-                        failedAction: body.queryResult.action
-                    }
-                });
-            }
-        }
+   //          if (body.queryResult.action && currentAction.action != body.queryResult.action) {
+   //              console.log("Updating action to: " + body.queryResult.action);
+   //              currentAction.action = body.queryResult.action;
+   //              res.sendStatus(200);
+   //          } else {
+   //              return res.status(400).json({
+   //                  status: {
+   //                      code: 400,
+   //                      failedAction: body.queryResult.action
+   //                  }
+   //              });
+   //          }
+   //      }
 
-     catch (err) {
-        console.error("Can't process request", err);
+   //  } catch (err) {
+   //      console.error("Can't process request", err);
 
-        return res.status(400).json({
-            status: {
-                code: 400,
-                errorType: err.message
-            }
-        });
-    }
+   //      return res.status(400).json({
+   //          status: {
+   //              code: 400,
+   //              errorType: err.message
+   //          }
+   //      });
+   //  }
 
 
 

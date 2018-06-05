@@ -16,9 +16,10 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
 
   console.log(req.body.queryResult.intent.displayName);
-   var totalCity = req.body.queryResult.outputContexts[0].parameters['geo-city'];
-   var city = req.body.queryResult.parameters['geo-city'];
-   var name = req.body.queryResult.parameters['name'];
+   var city = req.body.queryResult.outputContexts[0].parameters['geo-city'];
+   var name = req.body.queryResult.outputContexts[0].parameters['name'];
+   // var city = req.body.queryResult.parameters['geo-city'];
+   // var name = req.body.queryResult.parameters['name'];
 
    var drinks = ['Americano', 'Espresso', 'Cappuccino', 'Cafe Latte', 'Flat White'];
    var rand = drinks[Math.floor(Math.random() * drinks.length)];
@@ -50,7 +51,7 @@ restService.post("/echo", function(req, res) {
   if (req.body.queryResult.intent.displayName == "user.name.location - yes") {
     return res.json({
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
-          fulfillmentText: "Great! The special offer in  " + totalCity + " today is: a free" + rand + " ! Would you like to have one " + name + "?"
+          fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + " ! Would you like to have one " + name + "?"
         });
   };
 

@@ -4,6 +4,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const https = require('https');
 
+var WatchJS = require("melanke-watchjs")
+var watch = WatchJS.watch;
+var unwatch = WatchJS.unwatch;
+var callWatchers = WatchJS.callWatchers;
+
 const restService = express();
 restService.use(
   bodyParser.urlencoded({
@@ -14,6 +19,41 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
+   try {
+        if (req.body && req.body.result) {
+            var body = req.body;
+
+            if (body.result.fulfillment) {
+                console.log(body.result.fulfillmentText);
+            }
+
+            if (body.result.action && currentAction.action != body.result.action) {
+                console.log("Updating action to: " + body.result.action);
+                currentAction.action = body.result.action;
+                res.sendStatus(200);
+            } else {
+                return res.status(400).json({
+                    status: {
+                        code: 400,
+                        failedAction: body.result.action
+                    }
+                });
+            }
+        }
+
+
+    } catch (err) {
+        console.error("Can't process request", err);
+
+        return res.status(400).json({
+            status: {
+                code: 400,
+                errorType: err.message
+            }
+        });
+    }
+
+
   var city = req.body.queryResult.parameters['geo-city'];
   var name = req.body.queryResult.parameters['name'];
   // var antwoord = "Allright " + name + ", the Cappucino is free today in " + city;

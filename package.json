@@ -9,6 +9,7 @@
   "author": "Paul Geraets",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "melanke-watchjs": "^1.4.3"
   }
 }

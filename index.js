@@ -4,11 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const https = require('https');
 
-var WatchJS = require("melanke-watchjs")
-var watch = WatchJS.watch;
-var unwatch = WatchJS.unwatch;
-var callWatchers = WatchJS.callWatchers;
-
 const restService = express();
 restService.use(
   bodyParser.urlencoded({
@@ -21,7 +16,7 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
 
   console.log(req.body.queryResult.intent.displayName);
-  
+   var totalCity = req.body.queryResult.outputContexts[0].parameters['geo-city'];
    var city = req.body.queryResult.parameters['geo-city'];
    var name = req.body.queryResult.parameters['name'];
 
@@ -43,7 +38,7 @@ restService.post("/echo", function(req, res) {
         var weatherDescription  = weatherOutput.toLowerCase();
         return res.json({
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
-          fulfillmentText: "Allright " + name + ". because the weather is " + weatherDescription + " in " + city + " today, i've got a special offer for you. Do you want to know what special offer i have for you?" 
+          fulfillmentText: "Allright " + name + ". because the weather is " + weatherDescription + " in " + city + " today, i've got a special offer for you. Do you want to know what the special offer is?" 
         });
       });
 
@@ -55,15 +50,13 @@ restService.post("/echo", function(req, res) {
   if (req.body.queryResult.intent.displayName == "user.name.location - yes") {
     return res.json({
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
-          fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + " ! Would you like to have one?"
+          fulfillmentText: "Great! The special offer in  " + totalCity + " today is: a free" + rand + " ! Would you like to have one " + name + "?"
         });
   };
 
-
-
-
-
 });
+
+
 
 
 

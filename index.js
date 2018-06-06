@@ -39,7 +39,7 @@ restService.post("/echo", function(req, res) {
         var weatherDescription  = weatherOutput.toLowerCase();
         return res.json({
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
-          fulfillmentText: "Allright " + name + ". because the weather is " + weatherDescription + " in " + city + " today, i've got a special offer for you. Do you want to know what the special offer is?" 
+          fulfillmentText: "Allright " + name + ". because the weather is " + weatherDescription + " in " + city + " today, i've got a special offer for you: A free " + rand + "! Would you like to have one " + name + "?" 
         });
       });
 
@@ -50,8 +50,9 @@ restService.post("/echo", function(req, res) {
 
   if (req.body.queryResult.intent.displayName == "user.name.location - yes") {
     return res.json({
+      fulfillmentText: "Enjoy your free " + rand + "! Use this coupon code: #FF55403 in " + city + "." 
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
-          fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + "! Would you like to have one " + name + "?"
+          // fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + "! Would you like to have one " + name + "?"
         });
   }
 

@@ -17,7 +17,7 @@ var drinks = ['Americano', 'Espresso', 'Cappuccino', 'Cafe Latte', 'Flat White']
 var rand = drinks[Math.floor(Math.random() * drinks.length)];
 
 
-restService.post("/echo", function(req, res) {
+restService.post("/webhook", function(req, res) {
 
   console.log(req.body.queryResult.intent.displayName);
    var city = req.body.queryResult.outputContexts[0].parameters['geo-city'];

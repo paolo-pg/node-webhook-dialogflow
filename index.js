@@ -21,9 +21,10 @@ restService.post("/echo", function(req, res) {
    // var city = req.body.queryResult.parameters['geo-city'];
    // var name = req.body.queryResult.parameters['name'];
 
+   var randCoffee = [];
    var drinks = ['Americano', 'Espresso', 'Cappuccino', 'Cafe Latte', 'Flat White'];
    var rand = drinks[Math.floor(Math.random() * drinks.length)];
-   var randCoffee = rand;
+   randCoffee.push(rand());
 
   if (req.body.queryResult.intent.displayName == "user.name.location") {
     https.get('https://api.worldweatheronline.com/premium/v1/weather.ashx?key=86840a75efc34f51aaa130030182905&q=' + city + '&format=json&date=today', (resp) => {
@@ -40,7 +41,7 @@ restService.post("/echo", function(req, res) {
         var weatherDescription  = weatherOutput.toLowerCase();
         return res.json({
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
-          fulfillmentText: "Allright " + name + ". because the weather is " + weatherDescription + " in " + city + " today, i've got a special offer for you: A free " + randCoffee + "! Would you like to have one " + name + "?" 
+          fulfillmentText: "Allright " + name + ". because the weather is " + weatherDescription + " in " + city + " today, i've got a special offer for you: A free " + randCoffee[0] + "! Would you like to have one " + name + "?" 
         });
       });
 
@@ -51,7 +52,7 @@ restService.post("/echo", function(req, res) {
 
   if (req.body.queryResult.intent.displayName == "user.name.location - yes") {
     return res.json({
-      fulfillmentText: "Enjoy your free " + randCoffee + "! Use this coupon code: #FF55403 in " + city + "." 
+      fulfillmentText: "Enjoy your free " + randCoffee[0] + "! Use this coupon code: #FF55403 in " + city + "." 
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
           // fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + "! Would you like to have one " + name + "?"
         });

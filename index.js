@@ -24,7 +24,7 @@ restService.post("/echo", function(req, res) {
    var randCoffee = [];
    var drinks = ['Americano', 'Espresso', 'Cappuccino', 'Cafe Latte', 'Flat White'];
    var rand = drinks[Math.floor(Math.random() * drinks.length)];
-   randCoffee.push(rand());
+   randCoffee.push(rand);
 
   if (req.body.queryResult.intent.displayName == "user.name.location") {
     https.get('https://api.worldweatheronline.com/premium/v1/weather.ashx?key=86840a75efc34f51aaa130030182905&q=' + city + '&format=json&date=today', (resp) => {

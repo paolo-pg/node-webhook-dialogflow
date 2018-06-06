@@ -53,6 +53,13 @@ restService.post("/echo", function(req, res) {
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
           fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + "! Would you like to have one " + name + "?"
         });
+  }
+
+  if (req.body.queryResult.intent.displayName == "user.name.location - yes - yes") {
+    return res.json({
+          // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
+          fulfillmentText: "Enjoy your free " + rand + "! Use this coupon code: #FF55403 in " + city + "." 
+        });
   };
 
 });

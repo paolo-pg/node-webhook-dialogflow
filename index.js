@@ -25,7 +25,7 @@ restService.post("/echo", function(req, res) {
    var rand = drinks[Math.floor(Math.random() * drinks.length)];
 
   if (req.body.queryResult.intent.displayName == "user.name.location") {
-    https.get('https://api.worldweatheronline.com/premium/v1/weather.ashx?key=86840a75efc34f51aaa130030182905&q=Eindhoven&format=json&date=today', (resp) => {
+    https.get('https://api.worldweatheronline.com/premium/v1/weather.ashx?key=86840a75efc34f51aaa130030182905&q=' + city + '&format=json&date=today', (resp) => {
       let data = '';
 
       // A chunk of data has been recieved.
@@ -51,7 +51,7 @@ restService.post("/echo", function(req, res) {
   if (req.body.queryResult.intent.displayName == "user.name.location - yes") {
     return res.json({
           // fulfillmentText: "Allright " + name + ". I would the describe the weather as " + weatherDescription + " in " + city + " today. Would you like to order something?" 
-          fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + " ! Would you like to have one " + name + "?"
+          fulfillmentText: "Great! The special offer in  " + city + " today is: a free " + rand + "! Would you like to have one " + name + "?"
         });
   };
 
